@@ -2,7 +2,7 @@ package edu.wctc;
 
 import java.io.Serializable;
 
-public class Wall implements Serializable {
+public class Wall implements Serializable, Paintable {
 
     private double width;
     private double height;

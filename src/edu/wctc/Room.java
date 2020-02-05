@@ -3,16 +3,16 @@ package edu.wctc;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room implements Serializable {
+public class Room implements Serializable, Paintable {
 
     private static int roomCount = 0;
     private int roomNum;
-    private ArrayList<Wall> wallList;
+    private ArrayList<Paintable> wallList;
     double area;
     public Room(double length, double width, double height) throws BadWidthException, BadHeightException {
         roomNum = ++roomCount;
 
-        wallList = new ArrayList<Wall>();
+        wallList = new ArrayList<>();
 
         Wall wallA = new Wall(length, height);
         wallList.add(wallA);
@@ -37,7 +37,7 @@ public class Room implements Serializable {
         double area = 0;
 
         for (int i = 0; i < wallList.size(); i++) {
-            Wall w = wallList.get(i);
+            Wall w = (Wall)wallList.get(i);
             area += w.getArea();
         }
 
