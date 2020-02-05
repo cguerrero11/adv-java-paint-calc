@@ -1,5 +1,6 @@
 package edu.wctc;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,10 +30,10 @@ public class PaintCalculator {
                         createRoom();
                         break;
                     case 2:
-                        // writeFile();
+                        writeFile();
                         break;
                     case 3:
-                        // readFile();
+                        readFile();
                         break;
                     case 4:
                         printRooms();
@@ -91,6 +92,16 @@ public class PaintCalculator {
         } catch (BadWidthException | BadHeightException e) {
             System.out.println("Could not create room.");
         }
+
+    }
+    private void writeFile(){
+        RoomWriter writer = new RoomWriter();
+        writer.writeRoomFile("rooms.txt", roomList);
+    }
+    private void readFile(){
+        RoomReader reader = new RoomReader();
+        System.out.println("Reading file...");
+        this.roomList = reader.readRoomFile("rooms.txt");
 
     }
 }
